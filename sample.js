@@ -1,8 +1,10 @@
 $(function() {
   
-  $('#save').click(function() {
-    var name = document.getElementById("name").value;
-    setBlobUrl("download", name);
+  $('#save').click(() => {
+    var form = $('form');
+    var formData = form.serializeArray();
+    var formJson = JSON.stringify(formData);
+    setBlobUrl("download", formJson);
   });
 
   const setBlobUrl = (id, content) => {
@@ -11,19 +13,11 @@ $(function() {
 
     window.URL = window.URL || window.webkitURL;
     $("#" + id).attr("href", window.URL.createObjectURL(blob));
-    $("#" + id).attr("download", "tmp.txt");
+    $("#" + id).attr("download", "user.json");
 
   };
 
 
 });
 
-
-// $('save').click(() => {
-//   var form = $('form');
-//   var formData = form.serializeArray();
-//   var formJson = JSON.stringify(formData);
-  
-//   localStorage.setItem('form_data', formJson);
-// });
 
