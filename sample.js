@@ -18,6 +18,20 @@ $(function() {
   };
 
 
+  // ID 属性からエレメントを取得する
+	var input_file = document.getElementById("load");
+	var input_return = document.getElementById("path");
+
+	// ------------------------------------------------------------
+	// 値が変化したときに実行されるイベント
+	// ------------------------------------------------------------
+	input_file.onchange = function (){
+
+    input_return.value = input_file.value;
+    console.log(input_file.value);
+
+	};
+
 });
 
 
