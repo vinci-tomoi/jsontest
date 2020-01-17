@@ -18,19 +18,23 @@ $(function() {
   };
 
 
-  // ID 属性からエレメントを取得する
-	var input_file = document.getElementById("load");
-	var input_return = document.getElementById("path");
+  var form = document.forms.myform;
 
-	// ------------------------------------------------------------
-	// 値が変化したときに実行されるイベント
-	// ------------------------------------------------------------
-	input_file.onchange = function (){
+  form.myfile.addEventListener("change", function(e) {
+    var result = e.target.files[0];
 
-    input_return.value = input_file.value;
-    console.log(input_file.value);
+    var reader = new FileReader();
+    reader.readAsText(result);
+    reader.onload = function(e){
+      var readJson = JSON.parse(reader.result);
+      document.user.name.value = readJson[0].value;
+      document.user.age.value = readJson[1].value;
+    }
 
-	};
+  })
+
+
+
 
 });
 
