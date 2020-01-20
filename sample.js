@@ -6,6 +6,7 @@ $(function() {
     var formJson = JSON.stringify(formData);
     setBlobUrl("download", formJson);
   });
+  
 
   const setBlobUrl = (id, content) => {
 
